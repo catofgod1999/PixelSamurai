@@ -1,0 +1,45 @@
+
+{
+  "name": "pixel-samurai",
+  "version": "1.0.0",
+  "main": "main.js",
+  "description": "8-bit Pixel Action Game",
+  "author": "MR",
+  "scripts": {
+    "start": "npm run build && electron .",
+    "build": "esbuild index.tsx --bundle --outfile=index.js --format=esm --external:react --external:react-dom",
+    "build:mobile": "(if exist www rmdir /s /q www) && mkdir www && esbuild index.tsx --bundle --outfile=www/index.js --format=esm && copy index.html www\\index.html /y && copy index.css www\\index.css /y && (if exist assets xcopy assets www\\assets /E /I /Y)",
+    "build:win": "npm run build && electron-builder --win portable"
+  },
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.9.1",
+    "esbuild": "^0.20.0",
+    "@capacitor/cli": "^5.7.0"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "@capacitor/core": "^5.7.0",
+    "@capacitor/android": "^5.7.0",
+    "@capacitor/app": "^5.0.7",
+    "@capacitor/status-bar": "^5.0.7",
+    "@capacitor/keyboard": "^5.0.7"
+  },
+  "build": {
+    "appId": "com.pixelsamurai.game",
+    "win": {
+      "target": "portable",
+      "icon": "public/icon.ico"
+    },
+    "directories": {
+      "output": "dist_win"
+    },
+    "files": [
+      "**/*",
+      "!dist_win/*",
+      "!index.tsx",
+      "index.js"
+    ]
+  }
+}
