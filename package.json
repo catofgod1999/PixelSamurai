@@ -6,7 +6,8 @@
   "description": "8-bit Pixel Action Game",
   "author": "MR",
   "scripts": {
-    "start": "npm run build && electron .",
+    "start": "npm run build && npx serve -s dist -l $PORT",
+    "start:electron": "npm run build && electron .",
     "build": "mkdir -p dist && esbuild index.tsx --bundle --outfile=dist/index.js --format=esm --external:react --external:react-dom && cp index.html dist/index.html && cp index.css dist/index.css && (cp -r assets dist/assets || true)",
     "build:mobile": "mkdir -p www && esbuild index.tsx --bundle --outfile=www/index.js --format=esm && cp index.html www/index.html && cp index.css www/index.css && (cp -r assets www/assets || true)",
     "build:win": "npm run build && electron-builder --win portable"
@@ -20,6 +21,7 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "serve": "^14.2.3",
     "@capacitor/core": "^5.7.0",
     "@capacitor/android": "^5.7.0",
     "@capacitor/app": "^5.0.7",
