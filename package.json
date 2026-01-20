@@ -1,4 +1,3 @@
-
 {
   "name": "pixel-samurai",
   "version": "1.0.0",
@@ -6,7 +5,7 @@
   "description": "8-bit Pixel Action Game",
   "author": "MR",
   "scripts": {
-    "build": "mkdir -p dist && esbuild index.tsx --bundle --outfile=dist/index.js --format=esm --external:react --external:react-dom && cp index.html dist/index.html && cp index.css dist/index.css && (cp -r assets dist/assets || true)",
+    "build": "mkdir -p dist && esbuild index.tsx --bundle --outfile=dist/index.js --format=esm && cp index.html dist/index.html && cp index.css dist/index.css && (cp -r assets dist/assets || true)",
     "start": "serve -s dist -l $PORT",
     "start:electron": "npm run build && electron .",
     "build:mobile": "mkdir -p www && esbuild index.tsx --bundle --outfile=www/index.js --format=esm && cp index.html www/index.html && cp index.css www/index.css && (cp -r assets www/assets || true)",
